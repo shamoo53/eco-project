@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Leaf, ArrowLeft } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Leaf, ArrowLeft } from "lucide-react";
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -20,41 +26,61 @@ export default function SignUpPage() {
     confirmPassword: "",
     organization: "",
     agreeToTerms: false,
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle sign up logic here
-    console.log("Sign up data:", formData)
-  }
+    console.log("Sign up data:", formData);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4"
+    >
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center text-green-600 hover:text-green-700 mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-center mb-8"
+        >
+          <Link
+            href="/"
+            className="inline-flex items-center text-green-600 hover:text-green-700 mb-4"
+          >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
           <div className="flex items-center justify-center mb-4">
             <Leaf className="h-8 w-8 text-green-600" />
-            <span className="ml-2 text-2xl font-bold text-gray-900">eco-recycle</span>
+            <span className="ml-2 text-2xl font-bold text-gray-900">
+              eco-recycle
+            </span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Create Your Account</h1>
-          <p className="text-gray-600 mt-2">Join the sustainable future today</p>
-        </div>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Create Your Account
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Join the sustainable future today
+          </p>
+        </motion.div>
 
         <Card className="border-green-200 shadow-lg">
           <CardHeader>
             <CardTitle>Sign Up</CardTitle>
             <CardDescription>
-              Create your account to start managing carbon credits and environmental actions
+              Create your account to start managing carbon credits and
+              environmental actions
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -62,86 +88,127 @@ export default function SignUpPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">First Name</Label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder="John"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      placeholder="John"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </motion.div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="lastName">Last Name</Label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder="Doe"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    required
-                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  >
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      placeholder="Doe"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </motion.div>
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="john@example.com"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </motion.div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="organization">Organization (Optional)</Label>
-                <Input
-                  id="organization"
-                  name="organization"
-                  type="text"
-                  placeholder="Your company or organization"
-                  value={formData.organization}
-                  onChange={handleInputChange}
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <Input
+                    id="organization"
+                    name="organization"
+                    type="text"
+                    placeholder="Your company or organization"
+                    value={formData.organization}
+                    onChange={handleInputChange}
+                  />
+                </motion.div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Create a strong password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  required
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  <Input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Create a strong password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </motion.div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="Confirm your password"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  required
-                />
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  <Input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    placeholder="Confirm your password"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </motion.div>
               </div>
 
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="agreeToTerms"
                   checked={formData.agreeToTerms}
-                  onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, agreeToTerms: checked as boolean }))}
+                  onCheckedChange={(checked) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      agreeToTerms: checked as boolean,
+                    }))
+                  }
                 />
                 <Label htmlFor="agreeToTerms" className="text-sm">
                   I agree to the{" "}
@@ -163,18 +230,9 @@ export default function SignUpPage() {
                 Create Account
               </Button>
             </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Already have an account?{" "}
-                <Link href="/signin" className="text-green-600 hover:underline font-medium">
-                  Sign in
-                </Link>
-              </p>
-            </div>
           </CardContent>
         </Card>
       </div>
-    </div>
-  )
+    </motion.div>
+  );
 }
